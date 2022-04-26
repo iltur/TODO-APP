@@ -1,0 +1,7 @@
+<h1>TEST</h1>
+
+<ul>
+    <li *ngFor="let item of images$ | async"> {{ item | json }} 
+        <img [src]="item.img" width="380" height="250"><br>
+    </li>
+</ul>
