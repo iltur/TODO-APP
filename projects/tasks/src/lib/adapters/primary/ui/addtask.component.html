@@ -3,9 +3,22 @@
   (ngSubmit)="onAddTaskSubmited(addTask)"
   class="px-4 py-5 my-5 text-center"
 >
-  <input type="text" formControlName="name" placeholder="Task" />
+  <input
+    type="text"
+    formControlName="name"
+    placeholder="What is your task?"
+    style="height: 200px; width: 650px"
+  />
   <div>
     <br />
-    <input type="submit" value="Add Task" class="btn bg-purple text-white" />
+    <input
+      class="btn bg-purple text-white"
+      type="submit"
+      value="Add Task"
+      [disabled]="addTask.invalid"
+    /><br /><br />
+    <a class="btn bg-purple text-white" routerLink="/" role="button"
+      >No task to add</a
+    >
   </div>
 </form>
