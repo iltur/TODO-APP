@@ -14,3 +14,17 @@
     display: flex;
     justify-content: center;
 }
+
+.header {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 166px;
+
+    position: relative;
+    width: 100%;
+    height: 6%;
+    left: 0px;
+    top: 0px;
+}

@@ -6,6 +6,7 @@ import { ImagesComponentModule } from '../../../projects/images/src/lib/adapters
 import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/adapters/secondary/infrastructure/firebase-images.service-module';
 import { AddtaskComponentModule } from '../../../projects/tasks/src/lib/adapters/primary/ui/addtask.component-module';
 import { FirebaseAddtaskServiceModule } from '../../../projects/tasks/src/lib/adapters/secondary/infrastructure/firebase-addtask.service-module';
+import { ViewDateComponentModule } from '../../../projects/date/src/lib/adapters/primary/ui/view-date.component-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -18,7 +19,8 @@ import { FirebaseAddtaskServiceModule } from '../../../projects/tasks/src/lib/ad
     ImagesComponentModule,
     FirebaseImagesServiceModule,
     AddtaskComponentModule,
-    FirebaseAddtaskServiceModule
+    FirebaseAddtaskServiceModule,
+    ViewDateComponentModule
   ],
   declarations: [NewTaskPage],
   providers: [],

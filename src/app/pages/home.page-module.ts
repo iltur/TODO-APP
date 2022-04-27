@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { ImagesComponentModule } from '../../../projects/images/src/lib/adapters/primary/ui/images.component-module';
 import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/adapters/secondary/infrastructure/firebase-images.service-module';
+import { ViewDateComponentModule } from '../../../projects/date/src/lib/adapters/primary/ui/view-date.component-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -15,6 +16,7 @@ import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/ad
     ]),
     ImagesComponentModule,
     FirebaseImagesServiceModule,
+    ViewDateComponentModule
   ],
   declarations: [HomePage],
   providers: [],
