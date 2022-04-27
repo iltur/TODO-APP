@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TaskListPage } from './task-list.page';
-import { AddtaskComponentModule } from '@tasks';
-import { FirebaseAddtaskServiceModule } from 'projects/tasks/src/lib/adapters/secondary/infrastructure/firebase-addtask.service-module';
+import { AddtaskComponentModule } from '../../../projects/tasks/src/lib/adapters/primary/ui/addtask.component-module';
+import { FirebaseAddtaskServiceModule } from '../../../projects/tasks/src/lib/adapters/secondary/infrastructure/firebase-addtask.service-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -14,7 +14,8 @@ import { FirebaseAddtaskServiceModule } from 'projects/tasks/src/lib/adapters/se
       }
     ]),
     AddtaskComponentModule,
-    FirebaseAddtaskServiceModule
+    FirebaseAddtaskServiceModule,
+    AddtaskComponentModule
   ],
   declarations: [TaskListPage],
   providers: [],

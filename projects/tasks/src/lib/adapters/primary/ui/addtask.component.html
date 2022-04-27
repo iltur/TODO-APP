@@ -1,6 +1,10 @@
 <div class="center">
   <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
-    <input type="text" formControlName="name" placeholder="Task" />
-    <input type="submit" value="Add Task" />
+    <input type="text" formControlName="name" placeholder="Task" /><br />
+    <input
+      type="submit"
+      value="Add Task"
+      class="btn bg-purple text-white center"
+    />
   </form>
 </div>
