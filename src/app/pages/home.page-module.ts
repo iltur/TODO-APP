@@ -14,9 +14,7 @@ import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/ad
       }
     ]),
     ImagesComponentModule,
-    FirebaseImagesServiceModule
-
-
+    FirebaseImagesServiceModule,
   ],
   declarations: [HomePage],
   providers: [],
