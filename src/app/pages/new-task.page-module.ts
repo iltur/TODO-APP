@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NewTaskPage } from './new-task.page';
 import { ImagesComponentModule } from '../../../projects/images/src/lib/adapters/primary/ui/images.component-module';
 import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/adapters/secondary/infrastructure/firebase-images.service-module';
+import { AddtaskComponentModule } from '../../../projects/tasks/src/lib/adapters/primary/ui/addtask.component-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -14,7 +15,8 @@ import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/ad
       }
     ]),
     ImagesComponentModule,
-    FirebaseImagesServiceModule
+    FirebaseImagesServiceModule,
+    AddtaskComponentModule
   ],
   declarations: [NewTaskPage],
   providers: [],
