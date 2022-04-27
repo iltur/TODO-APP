@@ -5,6 +5,7 @@ import { NewTaskPage } from './new-task.page';
 import { ImagesComponentModule } from '../../../projects/images/src/lib/adapters/primary/ui/images.component-module';
 import { FirebaseImagesServiceModule } from '../../../projects/images/src/lib/adapters/secondary/infrastructure/firebase-images.service-module';
 import { AddtaskComponentModule } from '../../../projects/tasks/src/lib/adapters/primary/ui/addtask.component-module';
+import { FirebaseAddtaskServiceModule } from '../../../projects/tasks/src/lib/adapters/secondary/infrastructure/firebase-addtask.service-module';
 
 @NgModule({
   imports: [CommonModule,
@@ -16,7 +17,8 @@ import { AddtaskComponentModule } from '../../../projects/tasks/src/lib/adapters
     ]),
     ImagesComponentModule,
     FirebaseImagesServiceModule,
-    AddtaskComponentModule
+    AddtaskComponentModule,
+    FirebaseAddtaskServiceModule
   ],
   declarations: [NewTaskPage],
   providers: [],
