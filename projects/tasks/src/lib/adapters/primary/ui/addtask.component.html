@@ -1,8 +1,6 @@
 <div class="center">
-  <form [formGroup]="newTask">
-    <input type="text" formControlName="Newtask" placeholder="Newtask" /><input
-      type="submit"
-      value="Add task"
-    />
+  <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
+    <input type="text" formControlName="name" placeholder="Task" />
+    <input type="submit" value="Add Task" />
   </form>
 </div>

@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FirebaseImagesServiceModule } from '@images';
+import { FirebaseAddtaskServiceModule } from 'projects/tasks/src/lib/adapters/secondary/infrastructure/firebase-addtask.service-module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FirebaseImagesServiceModule } from '@images';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    FirebaseImagesServiceModule
+    FirebaseImagesServiceModule,
+    FirebaseAddtaskServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
