@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators';
 import { GetsAllAddtaskDtoPort } from '../../../application/ports/secondary/gets-all-addtask.dto-port';
 import { filterByCriterion } from '@lowgular/shared';
 import { RemovesAddtaskDtoPort } from '../../../application/ports/secondary/removes-addtask.dto-port';
-import { SetsAddtaskDtoPort } from '../../../application/ports/secondary/sets-addtask.dto-port';
+import { SetsAddtaskDtoPort, SETS_ADDTASK_DTO } from '../../../application/ports/secondary/sets-addtask.dto-port';
+
 
 @Injectable()
 export class FirebaseAddtaskService implements AddsAddtaskDtoPort, GetsAllAddtaskDtoPort, RemovesAddtaskDtoPort, SetsAddtaskDtoPort {
@@ -27,6 +28,6 @@ export class FirebaseAddtaskService implements AddsAddtaskDtoPort, GetsAllAddtas
   }
 
   set(addtask: Partial<AddtaskDTO>): void {
-    this._client.doc('addtasks/' + addtask.id).update(addtask);
+    this._client.doc('tasks/' + addtask.id).update(addtask);
   }
 }

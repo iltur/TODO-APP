@@ -17,6 +17,7 @@ export class AddtaskComponent {
     }
     this._addsAddtaskDto.add({
       name: addTask?.get('name')?.value,
+      radio: false
     });
     this.addTask.reset();
     this.router.navigate(['/tasks']);

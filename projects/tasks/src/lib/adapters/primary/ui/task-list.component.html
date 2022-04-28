@@ -1,6 +1,25 @@
 <ul>
-  <li class="header" *ngFor="let item of taskList$ | async">
-    <input type="radio" [checked]="item.radio" />
-    {{ item.name }}
+  <li class="header" *ngFor="let task of taskList$ | async">
+    <!-- Zamiast == nie trzeba niczego dodawac - moze byc samo task.radio -->
+    <div class="text-decoration-line-through" *ngIf="task.radio == true">
+      <input
+        class="form-check-input rounded-circle border-light border-1 bg-purple"
+        type="checkbox"
+        value=""
+        (change)="onRadioCheckeded(task)"
+        checked
+      />
+      {{ task.name }}
+    </div>
+    <!-- Zamiast == przy false mozna dac !task.radio -->
+    <div *ngIf="task.radio == false">
+      <input
+        class="form-check-input rounded-circle border-purple border-1 hover"
+        type="checkbox"
+        value=""
+        (change)="onRadioCheckeded(task)"
+      />
+      {{ task.name }}
+    </div>
   </li>
 </ul>
