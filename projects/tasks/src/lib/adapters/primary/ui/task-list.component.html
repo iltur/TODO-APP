@@ -1,5 +1,11 @@
 <ul>
   <li class="header" *ngFor="let item of taskList$ | async">
-    {{ item | json }}
+    <input
+      class="form-check-input rounded-circle pointer text-decoration-line-through"
+      type="checkbox"
+      name="flexRadioDefault"
+      [checked]="item.radio"
+    />
+    {{ item.name }}
   </li>
 </ul>
