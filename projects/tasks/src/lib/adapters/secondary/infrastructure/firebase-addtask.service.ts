@@ -24,7 +24,7 @@ export class FirebaseAddtaskService implements AddsAddtaskDtoPort, GetsAllAddtas
   }
 
   remove(id: string): void {
-    this._client.doc('addtasks/' + id).delete();
+    this._client.doc('tasks/' + id).delete();
   }
 
   set(addtask: Partial<AddtaskDTO>): void {

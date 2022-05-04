@@ -11,6 +11,7 @@
       />
       {{ task.name }}
     </div>
+
     <!-- Zamiast == przy false mozna dac !task.radio -->
     <div *ngIf="task.radio == false">
       <input
@@ -20,6 +21,34 @@
         (change)="onRadioCheckeded(task)"
       />
       {{ task.name }}
+    </div>
+
+    <div class="btn-group header" dropdown>
+      <button
+        id="button-basic"
+        dropdownToggle
+        type="button"
+        class="btn btn-white fw-bold"
+        aria-controls="dropdown-basic"
+      >
+        ...
+      </button>
+      <ul
+        id="dropdown-basic"
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-basic"
+      >
+        <li role="menuitem">
+          <a class="dropdown-item" (click)="onTaskDeleteed(task)"
+            >Delete task</a
+          >
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" href="#">Modify task</a>
+        </li>
+      </ul>
     </div>
   </li>
 </ul>

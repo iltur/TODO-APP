@@ -14,20 +14,29 @@ import {
     SETS_ADDTASK_DTO,
     SetsAddtaskDtoPort,
 } from '../../../application/ports/secondary/sets-addtask.dto-port';
+import { REMOVES_ADDTASK_DTO, RemovesAddtaskDtoPort } from '../../../application/ports/secondary/removes-addtask.dto-port';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 @Component({
     selector: 'lib-task-list',
     templateUrl: './task-list.component.html',
+    providers: [
+        {
+            provide: BsDropdownConfig,
+            useValue: { isAnimated: true, autoClose: true },
+        },
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class TaskListComponent {
     taskList$: Observable<AddtaskDTO[]> = this._getsAllAddtaskDto.getAll();
 
     constructor(
         @Inject(GETS_ALL_ADDTASK_DTO)
         private _getsAllAddtaskDto: GetsAllAddtaskDtoPort,
-        @Inject(SETS_ADDTASK_DTO) private _setsAddtaskDto: SetsAddtaskDtoPort
+        @Inject(SETS_ADDTASK_DTO) private _setsAddtaskDto: SetsAddtaskDtoPort, @Inject(REMOVES_ADDTASK_DTO) private _removesAddtaskDto: RemovesAddtaskDtoPort
     ) { }
 
     onRadioCheckeded(task: AddtaskDTO): void {
@@ -45,5 +54,9 @@ export class TaskListComponent {
                 radio: true
             })
         }
+    }
+
+    onTaskDeleteed(task: AddtaskDTO): void {
+        this._removesAddtaskDto.remove(task.id);
     }
 }
