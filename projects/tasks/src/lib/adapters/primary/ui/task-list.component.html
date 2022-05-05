@@ -24,7 +24,7 @@
       {{ task.name }}
     </div>
 
-    <div class="btn-group header" dropdown>
+    <div class="btn-group dots" dropdown>
       <button
         id="button-basic"
         dropdownToggle
@@ -45,9 +45,6 @@
           <a class="dropdown-item" (click)="onTaskDeleteed(task)"
             >Delete task</a
           >
-        </li>
-        <li role="menuitem">
-          <a class="dropdown-item" href="#">Modify task</a>
         </li>
       </ul>
     </div>

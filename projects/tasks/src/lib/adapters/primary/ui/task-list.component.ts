@@ -5,6 +5,7 @@ import {
     Inject,
 } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 import { AddtaskDTO } from '../../../application/ports/secondary/addtask.dto';
 import {
     GETS_ALL_ADDTASK_DTO,
@@ -32,7 +33,12 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 
 export class TaskListComponent {
-    taskList$: Observable<AddtaskDTO[]> = this._getsAllAddtaskDto.getAll();
+    taskList$: Observable<AddtaskDTO[]> = this._getsAllAddtaskDto.getAll()
+        .pipe(
+            map((taskList: AddtaskDTO[]) =>
+                taskList.sort((a, b) => a.count - b.count),
+            )
+        );
 
 
     deleteAlert: boolean = false;
@@ -51,14 +57,16 @@ export class TaskListComponent {
             this._setsAddtaskDto.set({
                 id: task.id,
                 name: task.name,
-                radio: false
+                radio: false,
+                count: task.count,
             })
         }
         if (task.radio == false) {
             this._setsAddtaskDto.set({
                 id: task.id,
                 name: task.name,
-                radio: true
+                radio: true,
+                count: task.count,
             })
         }
     }
