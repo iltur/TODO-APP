@@ -63,12 +63,13 @@ export class TaskListComponent {
     }
 
     onTaskDeleteed(task: AddtaskDTO): void {
-        this._removesAddtaskDto.remove(task.id);
+        if (confirm("Are you sure you want to delete this task?")) {
+            this._removesAddtaskDto.remove(task.id);
+            this.deleteAlert = true;
+        }
+
     }
 
-    showdeleteAlert(): void {
-        this.deleteAlert = true;
-    }
 
     close(): void {
         this.deleteAlert = false;
