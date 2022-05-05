@@ -36,6 +36,7 @@ export class TaskListComponent {
 
 
     deleteAlert: boolean = false;
+    completeAlert: boolean = false;
     dismissible: boolean = true;
 
 
@@ -69,10 +70,14 @@ export class TaskListComponent {
         }
 
     }
+    showCompleteAlert(): void {
+        this.completeAlert = true;
+    }
 
 
     close(): void {
         this.deleteAlert = false;
+        this.completeAlert = false;
 
     }
 

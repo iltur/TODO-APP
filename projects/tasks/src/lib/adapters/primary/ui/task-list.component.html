@@ -19,6 +19,7 @@
         type="checkbox"
         value=""
         (change)="onRadioCheckeded(task)"
+        (change)="showCompleteAlert()"
       />
       {{ task.name }}
     </div>
@@ -60,4 +61,13 @@
   (onClose)="close()"
 >
   <h4 class="alert-heading">Task deleted</h4>
+</alert>
+
+<alert
+  type="success"
+  [dismissible]="dismissible"
+  [isOpen]="completeAlert"
+  (onClose)="close()"
+>
+  <h4 class="alert-heading">Task completed!</h4>
 </alert>
