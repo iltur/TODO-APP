@@ -41,7 +41,10 @@
         aria-labelledby="button-basic"
       >
         <li role="menuitem">
-          <a class="dropdown-item" (click)="onTaskDeleteed(task)"
+          <a
+            class="dropdown-item"
+            (click)="onTaskDeleteed(task)"
+            (click)="showdeleteAlert()"
             >Delete task</a
           >
         </li>
@@ -52,3 +55,12 @@
     </div>
   </li>
 </ul>
+
+<alert
+  type="success"
+  [dismissible]="dismissible"
+  [isOpen]="deleteAlert"
+  (onClose)="close()"
+>
+  <h4 class="alert-heading">Task deleted</h4>
+</alert>

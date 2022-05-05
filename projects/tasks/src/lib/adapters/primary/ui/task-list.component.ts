@@ -17,6 +17,7 @@ import {
 import { REMOVES_ADDTASK_DTO, RemovesAddtaskDtoPort } from '../../../application/ports/secondary/removes-addtask.dto-port';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
+
 @Component({
     selector: 'lib-task-list',
     templateUrl: './task-list.component.html',
@@ -32,6 +33,11 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 export class TaskListComponent {
     taskList$: Observable<AddtaskDTO[]> = this._getsAllAddtaskDto.getAll();
+
+
+    deleteAlert: boolean = false;
+    dismissible: boolean = true;
+
 
     constructor(
         @Inject(GETS_ALL_ADDTASK_DTO)
@@ -59,4 +65,14 @@ export class TaskListComponent {
     onTaskDeleteed(task: AddtaskDTO): void {
         this._removesAddtaskDto.remove(task.id);
     }
+
+    showdeleteAlert(): void {
+        this.deleteAlert = true;
+    }
+
+    close(): void {
+        this.deleteAlert = false;
+
+    }
+
 }
