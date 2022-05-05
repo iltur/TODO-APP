@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Inject,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { AddtaskDTO } from '../../../application/ports/secondary/addtask.dto';
@@ -38,6 +39,7 @@ export class TaskListComponent {
             map((taskList: AddtaskDTO[]) =>
                 taskList.sort((a, b) => a.count - b.count),
             )
+
         );
 
 
@@ -49,6 +51,7 @@ export class TaskListComponent {
     constructor(
         @Inject(GETS_ALL_ADDTASK_DTO)
         private _getsAllAddtaskDto: GetsAllAddtaskDtoPort,
+        private router: Router,
         @Inject(SETS_ADDTASK_DTO) private _setsAddtaskDto: SetsAddtaskDtoPort, @Inject(REMOVES_ADDTASK_DTO) private _removesAddtaskDto: RemovesAddtaskDtoPort
     ) { }
 
@@ -71,10 +74,14 @@ export class TaskListComponent {
         }
     }
 
-    onTaskDeleteed(task: AddtaskDTO): void {
+    onTaskDeleteed(task: AddtaskDTO, taskList: AddtaskDTO[]): void {
         if (confirm("Are you sure you want to delete this task?")) {
             this._removesAddtaskDto.remove(task.id);
             this.deleteAlert = true;
+            if (taskList.length - 1 < 1) {
+                // moze być tez if.taskList.length <2
+                this.router.navigate(['/']);
+            }
         }
 
     }
@@ -89,4 +96,8 @@ export class TaskListComponent {
 
     }
 
+
+
 }
+
+

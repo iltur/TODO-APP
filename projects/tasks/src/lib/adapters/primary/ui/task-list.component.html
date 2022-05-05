@@ -1,55 +1,59 @@
-<ul>
-  <li class="header" *ngFor="let task of taskList$ | async">
-    <!-- Zamiast == nie trzeba niczego dodawac - moze byc samo task.radio -->
-    <div class="text-decoration-line-through" *ngIf="task.radio == true">
-      <input
-        class="form-check-input rounded-circle border-light border-1 bg-purple"
-        type="checkbox"
-        value=""
-        (change)="onRadioCheckeded(task)"
-        checked
-      />
-      {{ task.name }}
-    </div>
+<div *ngIf="taskList$ | async as taskList">
+  <ul>
+    <li class="header" *ngFor="let task of taskList">
+      <!-- Zamiast == nie trzeba niczego dodawac - moze byc samo task.radio -->
+      <div class="text-decoration-line-through" *ngIf="task.radio == true">
+        <input
+          class="form-check-input rounded-circle border-light border-1 bg-purple"
+          type="checkbox"
+          value=""
+          (change)="onRadioCheckeded(task)"
+          checked
+        />
+        {{ task.name }}
+      </div>
 
-    <!-- Zamiast == przy false mozna dac !task.radio -->
-    <div *ngIf="task.radio == false">
-      <input
-        class="form-check-input rounded-circle border-purple border-1 hover"
-        type="checkbox"
-        value=""
-        (change)="onRadioCheckeded(task)"
-        (change)="showCompleteAlert()"
-      />
-      {{ task.name }}
-    </div>
+      <!-- Zamiast == przy false mozna dac !task.radio -->
+      <div *ngIf="task.radio == false">
+        <input
+          class="form-check-input rounded-circle border-purple border-1 hover"
+          type="checkbox"
+          value=""
+          (change)="onRadioCheckeded(task)"
+          (change)="showCompleteAlert()"
+        />
+        {{ task.name }}
+      </div>
 
-    <div class="btn-group dots" dropdown>
-      <button
-        id="button-basic"
-        dropdownToggle
-        type="button"
-        class="btn btn-white fw-bold"
-        aria-controls="dropdown-basic"
-      >
-        ...
-      </button>
-      <ul
-        id="dropdown-basic"
-        *dropdownMenu
-        class="dropdown-menu"
-        role="menu"
-        aria-labelledby="button-basic"
-      >
-        <li role="menuitem">
-          <a class="dropdown-item" (click)="onTaskDeleteed(task)"
-            >Delete task</a
-          >
-        </li>
-      </ul>
-    </div>
-  </li>
-</ul>
+      <div class="btn-group dots bg-hover-medium" dropdown>
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="btn btn-white fw-bold"
+          aria-controls="dropdown-basic"
+        >
+          ...
+        </button>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu bg-hover-light"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem">
+            <a
+              class="dropdown-item bg-hover-light"
+              (click)="onTaskDeleteed(task, taskList)"
+              >Delete task</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
 
 <alert
   type="success"
