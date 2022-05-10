@@ -1,3 +1,23 @@
+<div class="p-5 position-absolute top-5 end-0 translate-middle">
+  <alert
+    type="success"
+    [dismissible]="dismissible"
+    [isOpen]="deleteAlert"
+    (onClose)="close()"
+  >
+    <h5 class="alert-heading">Task deleted</h5>
+  </alert>
+
+  <alert
+    type="success"
+    [dismissible]="dismissible"
+    [isOpen]="completeAlert"
+    (onClose)="close()"
+  >
+    <h5 class="alert-heading">Task completed!</h5>
+  </alert>
+</div>
+
 <div *ngIf="taskList$ | async as taskList">
   <ul>
     <li class="header" *ngFor="let task of taskList">
@@ -54,21 +74,3 @@
     </li>
   </ul>
 </div>
-
-<alert
-  type="success"
-  [dismissible]="dismissible"
-  [isOpen]="deleteAlert"
-  (onClose)="close()"
->
-  <h4 class="alert-heading">Task deleted</h4>
-</alert>
-
-<alert
-  type="success"
-  [dismissible]="dismissible"
-  [isOpen]="completeAlert"
-  (onClose)="close()"
->
-  <h4 class="alert-heading">Task completed!</h4>
-</alert>
