@@ -54,7 +54,7 @@ export class TaskListComponent {
         private router: Router,
         @Inject(SETS_ADDTASK_DTO) private _setsAddtaskDto: SetsAddtaskDtoPort, @Inject(REMOVES_ADDTASK_DTO) private _removesAddtaskDto: RemovesAddtaskDtoPort
     ) { }
-
+    //  zmiana wartości boolean w radio w firebase w razie zaznaczenia checkboxa z false na true albo odwrotnie
     onRadioCheckeded(task: AddtaskDTO): void {
         if (task.radio == true) {
             this._setsAddtaskDto.set({
@@ -73,7 +73,9 @@ export class TaskListComponent {
             })
         }
     }
-
+    // usunięcie taska z listy i z fireabse, przekierowanie na homepage w razie gdyby usunięto wszystkie taski z listy 
+    // (sprawdzenie listy tasków ma miejsce przed usunięciem dlatego lenght -1>1 albo >2)
+    // wywołanie alertu delete; następuje zmiana boolean, która jest na sztywno zadeklarowana jako false
     onTaskDeleteed(task: AddtaskDTO, taskList: AddtaskDTO[]): void {
         if (confirm("Are you sure you want to delete this task?")) {
             this._removesAddtaskDto.remove(task.id);
@@ -85,11 +87,13 @@ export class TaskListComponent {
         }
 
     }
+    // wywołanie alertu completed; nastepuje zmiana wartości boolean która na sztywno jest zadeklarowana jako false
     showCompleteAlert(): void {
         this.completeAlert = true;
     }
 
 
+    // powrót do pierwotnej, zadeklarowanej na sztywno wartości boolean w razie zamkniecia alertu completed albo deleted
     close(): void {
         this.deleteAlert = false;
         this.completeAlert = false;

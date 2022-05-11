@@ -1,3 +1,5 @@
+<!-- umiejscowienie, wygląd i akcje zwiazane z alertami -->
+
 <div class="p-5 position-absolute top-5 end-0 translate-middle">
   <alert
     type="success"
@@ -17,6 +19,9 @@
     <h5 class="alert-heading">Task completed!</h5>
   </alert>
 </div>
+
+<!-- akcja związana z odhaczeniem taska jak completed, wygląd listy w związku z tą akcją, 
+wywołanie alertu w razie zaznaczenia checkboxa -->
 
 <div *ngIf="taskList$ | async as taskList">
   <ul>
@@ -44,6 +49,8 @@
         />
         {{ task.name }}
       </div>
+
+      <!-- dropdownmenu związane z buttonem delete, wywołanie alertu zostało zdefiniowane w .ts -->
 
       <div class="btn-group dots bg-hover-medium" dropdown>
         <button
